@@ -11,4 +11,7 @@ module ApplicationHelper
 			content_tag(:span, options[:false], :class => options[:false_class])	
 		end
 	end	
+	def error_messages_for( object )
+    	render(:partial => 'shared/error_messages', :locals => {:object => object})
+  	end
 end

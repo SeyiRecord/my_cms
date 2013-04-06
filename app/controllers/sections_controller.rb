@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
-  layout 'admin'
 
+  layout 'admin'
+  
   def index
     list
     render('list')
@@ -16,6 +17,8 @@ class SectionsController < ApplicationController
   
   def new
     @section = Section.new
+    @section_count = Section.count + 1
+    @pages = Page.order('position ASC')
   end
   
   def create
@@ -24,12 +27,16 @@ class SectionsController < ApplicationController
       flash[:notice] = "Section created."
       redirect_to(:action => 'list')
     else
+      @section_count = Section.count + 1
+      @pages = Page.order('position ASC')
       render('new')
     end
   end
   
   def edit
     @section = Section.find(params[:id])
+    @section_count = Section.count
+    @pages = Page.order('position ASC')
   end
   
   def update
@@ -38,6 +45,8 @@ class SectionsController < ApplicationController
       flash[:notice] = "Section updated."
       redirect_to(:action => 'show', :id => @section.id)
     else
+      @section_count = Section.count
+      @pages = Page.order('position ASC')
       render('edit')
     end
   end
