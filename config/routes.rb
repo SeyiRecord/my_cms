@@ -1,4 +1,7 @@
 MyCms::Application.routes.draw do
+  
+  match 'admin', :to => 'access#menu'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

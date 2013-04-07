@@ -5,6 +5,8 @@ class AdminUser < ActiveRecord::Base
   has_many :section_edits
   has_many :sections, :through => :section_edits
 
+  attr_accessor :password
+
   EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
   
   validates_presence_of :first_name
@@ -19,6 +21,48 @@ class AdminUser < ActiveRecord::Base
   validates_format_of :email, :with => EMAIL_REGEX
   validates_confirmation_of :email
 
+  validates_length_of :password, :within => 8..25, :on => :create
+  before_save :create_hashed_password
+  after_save :clear_password
+
   scope :named, lambda {|first,last| where(:first_name => first, :last_name => last)}
+
+  def self.authenticate(username="", password="")
+    user = AdminUser.find_by_username(username)
+    if user && user.password_match?(password)
+      return user
+    else
+      return false
+    end
+  end
+
+  def password_match?(password="")
+    hashed_password == AdminUser.hash_with_salt(password, salt)
+  end
+
+  #attr_protected :hashed_password, :salt
+  def self.make_salt(username="")
+    Digest::SHA1.hexdigest("Use #{username} with #{Time.now} to make salt")
+  end
+
+  def self.hash_with_salt(password="", salt="")
+    Digest::SHA1.hexdigest("Put #{salt} on the #{password}")
+  end
+
+  private
+  
+  def create_hashed_password
+    # Whenever :password has a value hashing is needed
+    unless password.blank?
+      # always use "self" when assigning values
+      self.salt = AdminUser.make_salt(username) if salt.blank?
+      self.hashed_password = AdminUser.hash_with_salt(password, salt)
+    end
+  end
+
+  def clear_password
+    # for security and b/c hashing is not needed
+    self.password = nil
+  end
 
 end
