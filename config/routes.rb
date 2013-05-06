@@ -1,5 +1,14 @@
 MyCms::Application.routes.draw do
 
+  # resources :public
+  # resources :access
+  # resources :subjects
+  resources :admin_users
+
+  resources :categories
+  
+  resources :songs
+
   root :to => "public#index"
   match 'admin', :to => 'access#menu'
   match 'show/:id', :to => 'public#show'

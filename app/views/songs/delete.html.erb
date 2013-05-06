@@ -1,0 +1,19 @@
+<% @category_title = "Delete Song: #{@song.name}" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :category_id => @category.id}, :class => 'back-link') %>
+
+<div class="song delete">
+  <h2>Delete Song</h2>
+  
+  <%= form_for(:song, :url => {:action => 'destroy', :id => @song.id, :category_id => @category.id}) do |f| -%>
+
+    <p>Are you sure you want to permanently delete this song?</p>
+  
+    <p class="reference-name"><%= @song.name %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag("Delete Song") %>
+    </div>
+    
+  <% end %>
+</div>

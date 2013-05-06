@@ -1,0 +1,29 @@
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="category show">
+  <h2>Show Category</h2>
+
+  <table summary="Category detail view">
+    <tr>
+      <th>Name</th>
+      <td><%= @category.name %></td>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <td><%= @category.position %></td>
+    </tr>
+    <tr>
+      <th>Visible?</th>
+      <td><%= @category.visible ? 'true' : 'false' %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @category.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @category.updated_at %></td>
+    </tr>
+  </table>
+  
+</div>

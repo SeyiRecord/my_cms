@@ -1,0 +1,48 @@
+<%= error_messages_for(@song) %>
+
+<table summary="Song form fields">
+  <tr>
+    <th><%= f.label(:category_id, "Category") %></th>
+    <td><%= f.select(:category_id, @categories.collect {|p| [p.name, p.id]}) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:name) %></th>
+    <td><%= f.text_field(:name) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:artist) %></th>
+    <td><%= f.text_field(:artist) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:album) %></th>
+    <td><%= f.text_field(:album) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:image) %></th>
+    <td><%= f.text_field(:image) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:comments) %></th>
+    <td><%= f.text_field(:comments) %></td>
+  </tr>  
+
+  <!--<tr>
+    <th><%#= f.label(:position) %></th>
+    <td><%#= f.select(:position, 1..@song_count) %></td>
+  </tr>
+  <tr>
+    <th><%#= f.label(:visible) %></th>
+    <td><%#= f.check_box(:visible) %></td>
+  </tr> -->
+  <!-- <tr> -->
+    <th><%#= f.label(:content_type) %></th>
+    <!-- <td> -->
+      <!-- <%#= f.radio_button(:content_type, 'text') %> Text -->
+      <!-- <%#= f.radio_button(:content_type, 'HTML') %> HTML -->
+    <!-- </td> -->
+  <!-- </tr> -->
+  <!-- <tr> -->
+    <th><%#= f.label(:content) %></th>
+    <!-- <td><%#= f.text_area(:content, :size => '40x10') %></td> -->
+  </tr>
+</table>

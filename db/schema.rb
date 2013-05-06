@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403164940) do
+ActiveRecord::Schema.define(:version => 20130505185637) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20130403164940) do
   end
 
   add_index "admin_users_pages", ["admin_user_id", "page_id"], :name => "index_admin_users_pages_on_admin_user_id_and_page_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.boolean  "visible",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.integer  "subject_id"
@@ -68,6 +76,17 @@ ActiveRecord::Schema.define(:version => 20130403164940) do
   end
 
   add_index "sections", ["page_id"], :name => "index_sections_on_page_id"
+
+  create_table "songs", :force => true do |t|
+    t.string   "category"
+    t.string   "title"
+    t.string   "artist"
+    t.string   "album"
+    t.string   "image"
+    t.text     "comments"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "subjects", :force => true do |t|
     t.string   "name"

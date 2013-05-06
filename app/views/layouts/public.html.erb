@@ -13,9 +13,14 @@
     </div>
     <div id="main">
       <div id="navigation">
+        <%= link_to "Admin Login", 'access/login'  %>
         <%= render(:partial => 'layouts/navigation', :locals => {:subjects => @subjects}) %>
       </div>
       <div id="content">
+        <% @subjects.each do |s| %>
+          <%= s.name %>
+          <%= s.position %>
+        <% end %>
         <%= yield %>
       </div>
       <div class="clear"></div>

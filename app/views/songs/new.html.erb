@@ -1,0 +1,17 @@
+<% @category_title = "Create Song" %>
+
+<%= link_to("<< Back to List", {:action => 'list', :category_id => @category.id}, :class => 'back-link') %>
+
+<div class="song new">
+  <h2>Create Song</h2>
+
+  <%= form_for(:song, :url => {:action => 'create', :category_id => @category.id}) do |f| %>
+  
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    
+    <div class="form-buttons">
+      <%= submit_tag("Create Song") %>
+    </div>
+    
+  <% end %>
+</div>
