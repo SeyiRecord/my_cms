@@ -6,6 +6,8 @@ class PublicController < ApplicationController
   
   def index
     # intro text
+    @categories = Category.all
+    @songs = Song.find(:all)
   end
 
   def show

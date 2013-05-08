@@ -1,11 +1,11 @@
-<% @page_title = "Edit Category: #{@category.name}" %>
+<% @category_title = "Edit Category: #{@category.name}" %>
 
 <%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
 
 <div class="category edit">
   <h2>Update Category</h2>
 
-  <%= form_for(:category, :url => {:action => 'update', :id => @category.id}) do |f| %>
+  <%= form_for(@category) do |f| %>
   
     <%= render(:partial => "form", :locals => {:f => f}) %>
     

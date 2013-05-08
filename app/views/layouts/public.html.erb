@@ -3,9 +3,11 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>My CMS <%= "| #{@page_title}" if @page_title %></title>
+    <title>Music World <%= "| #{@page_title}" if @page_title %></title>
     <meta name="author" content="James Adeola">
+    <%= javascript_include_tag "application" %>
     <%= stylesheet_link_tag('public') %>
+    <%= stylesheet_link_tag('application') %>
   </head>
   <body>
     <div id="header">
@@ -14,13 +16,16 @@
     <div id="main">
       <div id="navigation">
         <%= link_to "Admin Login", 'access/login'  %>
-        <%= render(:partial => 'layouts/navigation', :locals => {:subjects => @subjects}) %>
+        <%= link_to "All Songs", songs_path %>
+        <div id='search_bar'>
+          <%= render 'layouts/search'  %>
+        </div>
       </div>
       <div id="content">
-        <% @subjects.each do |s| %>
-          <%= s.name %>
-          <%= s.position %>
+        <% flash.each do |k,v| %>
+          <div class="alert alert-<%= k %>"><%= v %></div>
         <% end %>
+
         <%= yield %>
       </div>
       <div class="clear"></div>

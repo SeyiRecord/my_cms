@@ -1,0 +1,21 @@
+<% @page_title = "Search Page" %>
+<div id="page_content">
+	<% if !@songs.blank? %>
+		<% @songs.each do |song| %>
+		<ul>
+			View Song: <%= link_to "#{song.title}", song_path(song) %>
+			<li>
+				<%= song.artist %>
+			</li>
+			<li>
+				<%= song.album %>
+			</li>
+			<li>
+      <iframe width="240" height="120" src="http://www.youtube.com/embed/<%= youtube_video_link(song.link) %>" frameborder="0" allowfullscreen></iframe><br/>
+			</li>
+		</ul>
+		<% end %>
+	<% else %>
+			<p>You provided no value. Please supply one.</p>
+	<% end %>
+</div>

@@ -1,6 +1,28 @@
+<% @page_title = "Category List" %>
 
 <div class="category show">
-	<% @categories.each do |category| %>
-	<p><%= category.name %> <p/>
-	<% end %>
+	<table class="listing" summary="Category List" >
+		<tr >
+			<th>&nbsp;</th>
+      		<th>Category</th>
+      		<th>Visible</th>
+	      	<th>Songs</th>
+	      	<th>Actions</th>
+       	</tr>
+
+       	<% @categories.each do |category_item| %>
+	    <tr class="<%= cycle('odd', 'even') %>">
+	      	<td><%= category_item.position %></td>
+      		<td><%= category_item.name %></td>
+      		<td class="center"><%= status_tag(category_item.visible) %></td>
+	      	<td class="center"><%= category_item.songs.size %></td>
+	      	<td class="actions">
+	        <%= link_to("View Details", {:action => 'show', :id => category_item.id}, :class => 'action show') %>
+	        <%= link_to("Edit", {:action => 'edit', :id => category_item.id}, :class => 'action edit') %>
+	        <%= link_to("Delete", category_item, :confirm => "Are you sure?", :method => :delete, :class => 'action edit' ) %>
+		</tr>
+	<% end %>	
+	</table>
+	
+	
 </div>

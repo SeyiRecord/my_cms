@@ -11,3 +11,23 @@
  *= require_self
  *= require_tree .
  */
+.alert{
+	font-size: 14px;
+}
+.alert-error{
+	font-size: 14px;
+	color: red;
+}
+.alert-notice{
+	font-size: 14px;
+	color: yellow;
+}
+
+.alert-success{
+	font-size: 14px;
+	color: green;
+}
+
+#page_content{
+	width: 960px;
+}

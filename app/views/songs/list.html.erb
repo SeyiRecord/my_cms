@@ -1,11 +1,13 @@
 <% @category_title = "Songs List" %>
 
-<%= link_to("<< Back to categorys List", {:controller => "categories", :action => 'list', :subject_id => @category.subject_id}, :class => 'back-link') %>
+<%= link_to("<< Back to categories List", {:controller => "categories", :action => 'list', :subject_id => @category.category_id}, :class => 'back-link') %>
 
 <div class="song list">
   <h2>Songs</h2>
   
   <%= link_to("Add New Song", {:action => 'new', :category_id => @category.id}, :class => 'action new') %>
+
+  <div><%= pluralize(@songs.size, 'category') %> found </div>
 
   <table class="listing" summary="Song list">
     <tr class="header">
@@ -20,7 +22,7 @@
       <th>Actions</th>
     </tr>
     <% @songs.each do |song| %>
-    <tr>
+    <tr class="<%= cycle('odd', 'even') %>">
       <td><%= song.position %></td>
       <td><%= song.name %></td>
       <td class="center"><%= status_tag(song.visible) %></td>

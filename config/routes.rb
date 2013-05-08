@@ -1,8 +1,7 @@
 MyCms::Application.routes.draw do
 
-  # resources :public
-  # resources :access
-  # resources :subjects
+  resources :comments
+
   resources :admin_users
 
   resources :categories

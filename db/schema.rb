@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505185637) do
+ActiveRecord::Schema.define(:version => 20130508204653) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(:version => 20130505185637) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "song_id"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["song_id"], :name => "index_comments_on_song_id"
+
   create_table "pages", :force => true do |t|
     t.integer  "subject_id"
     t.string   "name"
@@ -53,6 +67,11 @@ ActiveRecord::Schema.define(:version => 20130505185637) do
 
   add_index "pages", ["permalink"], :name => "index_pages_on_permalink"
   add_index "pages", ["subject_id"], :name => "index_pages_on_subject_id"
+
+  create_table "searches", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "section_edits", :force => true do |t|
     t.integer  "admin_user_id"
@@ -77,16 +96,8 @@ ActiveRecord::Schema.define(:version => 20130505185637) do
 
   add_index "sections", ["page_id"], :name => "index_sections_on_page_id"
 
-  create_table "songs", :force => true do |t|
-    t.string   "category"
-    t.string   "title"
-    t.string   "artist"
-    t.string   "album"
-    t.string   "image"
-    t.text     "comments"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+# Could not dump table "songs" because of following StandardError
+#   Unknown type 'category_id' for column 'category'
 
   create_table "subjects", :force => true do |t|
     t.string   "name"

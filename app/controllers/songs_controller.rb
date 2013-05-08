@@ -1,32 +1,34 @@
 class SongsController < ApplicationController
+  layout 'public'
 
-  layout 'admin'
-  
   before_filter :confirm_logged_in
-  before_filter :find_page
+
+  skip_before_filter :confirm_logged_in, :only => [:show, :destroy] #bad things happen
   
   def index
-    # list
-    # render('list')
+    @songs = Song.find(:all)
+    @categories = Category.all
   end
   
-  # def list
-  #   @songs = Song.sorted.where(:page_id => @page.id)
-  # end
-  
   def show
+    @categories = Category.all
     @song = Song.find(params[:id])
+    @comment = Comment.new(params[:comment])
+    @comments = Comment.where("song_id = ?", params[:id])
+
   end
   
   def new
-    @song = Song.new(params[:song])
+    @categories = Category.all
+    @song = Song.new
   end
   
   def create
     @song = Song.new(params[:song])
     if @song.save
       flash[:notice] = "Song created."
-      redirect_to root_path
+      #redirect_to root_path
+      redirect_to Song.new
     else
       flash[:error] = "Song not created."
       render('new')
@@ -34,10 +36,12 @@ class SongsController < ApplicationController
   end
   
   def edit
+    @categories = Category.all
     @song = Song.find(params[:id])
   end
   
   def update
+    @categories = Category.all
     @song = Song.find(params[:id])
     if @song.update_attributes(params[:song])
       flash[:notice] = "Song updated."
@@ -56,15 +60,15 @@ class SongsController < ApplicationController
     song = Song.find(params[:id])
     song.destroy
     flash[:notice] = "Song destroyed."
-    redirect_to(:action => 'list', :page_id => @page.id)
+    redirect_to root_path
   end
 
-  private
-  
-  def find_page
-    if params[:page_id]
-      @page = Page.find_by_id(params[:page_id])
-    end
-  end
+#  private
+  #
+  #def find_page
+   # if params[:page_id]
+      #@page = Page.find_by_id(params[:page_id])
+    #end
+  #end
   
 end

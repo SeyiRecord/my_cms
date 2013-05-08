@@ -1,43 +1,37 @@
-<% @page_title = "Show Song: #{@song.name}" %>
-
-<%= link_to("<< Back to List", {:action => 'list', :page_id => @page.id}, :class => 'back-link') %>
+<% @page_title = "#{@song.title}" %>
 
 <div class="song show">
-  <h2>Show Song</h2>
+  <h2><%= @song.title %></h2>
 
   <table summary="Song detail view">
     <tr>
-      <th>Page ID</th>
-      <td><%= @song.page_id %></td>
-    </tr>
-    <tr>
       <th>Name</th>
-      <td><%= @song.name %></td>
-    </tr>
-    <tr>
-      <th>Position</th>
-      <td><%= @song.position %></td>
-    </tr>
-    <tr>
-      <th>Visible?</th>
-      <td><%= @song.visible ? 'true' : 'false' %></td>
-    </tr>
-    <tr>
-      <th>Created</th>
-      <td><%= @song.created_at %></td>
-    </tr>
-    <tr>
-      <th>Updated</th>
-      <td><%= @song.updated_at %></td>
-    </tr>
-    <tr>
-      <th>Content Type</th>
-      <td><%= @song.content_type %></td>
-    </tr>
-    <tr>
-      <th>Content</th>
-      <td><%= @song.content %></td>
+      <td><%= @song.title %></td>
+      <td><%= @song.link %></td>
+      <iframe width="560" height="315" src="http://www.youtube.com/embed/<%= youtube_video_link(@song.link) %>" frameborder="0" allowfullscreen></iframe><br/>
     </tr>
   </table>
   
+</div>
+
+<div>
+	<% @comments.each do |comment| %>
+	<ul>
+		<p>Comment Title: <%= comment.title  %><br />Comment:<%= comment.comment  %></p>
+	    <%= link_to "Edit", edit_comment_path(comment) %>
+	    <%= link_to("Delete", comment, :confirm => "Are you sure?", :method => :delete ) if admin %>
+	</ul>
+
+	<% end %>
+</div>
+
+<div>
+	<%= form_for @comment do |f| %>
+		<%= f.label :title, 'Comment Title' %>
+		<%= f.text_field(:title) %>
+		<%= f.label :comment, 'Comment' %>
+		<%= f.text_area(:comment) %>
+		<%= f.hidden_field :song_id, value: @song.id %>
+		<%= f.submit "Boss" %>
+	<% end %>
 </div>

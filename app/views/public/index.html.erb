@@ -1,3 +1,14 @@
 <h2>Welcome to the Simple CMS!</h2>
 
 <p>This is where we welcome you! </p>
+  <ul>
+      <% @categories.each do |category| %>
+          <%=  button_tag("#{category.name}", class: "#{category.name}") %> <br />
+            <%= content_tag :div, :id => "#{category.name}" do %>
+                        <% get_song_id(category.id).each do |song| %>
+        		              	<li><%= link_to song.title, song_path(song.id) %> - <%= song.artist %> </li>
+        		            <% end %>
+            <% end %>
+      <% end %>
+  </ul>
+<%#= @songs %>

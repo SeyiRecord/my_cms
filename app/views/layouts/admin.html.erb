@@ -5,18 +5,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>My CMS | <%= @page_title || 'Admin Area' %></title>
     <meta name="author" content="James Adeola">
-    <%= stylesheet_link_tag('public', 'admin', :media => 'all') %>
+    <%= stylesheet_link_tag('public', 'admin', "application", :media => 'all') %>
     <%= javascript_include_tag('application') %>
   </head>
   <body>
-  <%= link_to "Admin Page", admin_path  %>
-  <%= link_to "Admin Users", admin_users_path  %>
-  <%= link_to "Create category", new_category_path  %>
-  <%#= link_to "Edit category", edit_category_path  %>
-  <%= link_to "All categories", categories_path  %>
+    
     <div id="header">
       <h1>My CMS Admin</h1>
     </div>
+    
+    <div class="top">
+      <div class="navbar"><%= link_to "Admin Page", admin_path  %></div>
+      <div class="navbar"><%= link_to "Admin Users", admin_users_path  %></div>
+      <div class="navbar"><%= link_to "Create category", new_category_path  %></div>
+      <div class="navbar"><%= link_to "All categories", categories_path  %></div>
+    </div>
+
     <div id="main">
       <% if !flash[:notice].blank? %>
       <div class="notice">
@@ -24,6 +28,9 @@
       </div>
       <% end %>
       <div id="content">
+        <% flash.each do |k,v| %>
+          <div class="alert alert-<%= k %>"><%= v %></div>
+        <% end %>
         <%= yield %>
       </div>
     </div>

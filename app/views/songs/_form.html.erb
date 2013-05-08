@@ -3,11 +3,12 @@
 <table summary="Song form fields">
   <tr>
     <th><%= f.label(:category_id, "Category") %></th>
-    <td><%= f.select(:category_id, @categories.collect {|p| [p.name, p.id]}) %></td>
+    <th><%= f.select(:category_id, Category.all.collect {|category| [ category.name, category.id ] }, { :prompt => "Category", :include_blank => true }) %></th>
   </tr>
+<!-- <iframe width="560" height="315" src="song.url" frameborder="0" allowfullscreen></iframe> -->
   <tr>
-    <th><%= f.label(:name) %></th>
-    <td><%= f.text_field(:name) %></td>
+    <th><%= f.label(:title) %></th>
+    <td><%= f.text_field(:title) %></td>
   </tr>
   <tr>
     <th><%= f.label(:artist) %></th>
@@ -18,31 +19,11 @@
     <td><%= f.text_field(:album) %></td>
   </tr>
   <tr>
-    <th><%= f.label(:image) %></th>
-    <td><%= f.text_field(:image) %></td>
+    <th><%= f.label(:link) %></th>
+    <td><%= f.text_field(:link) %></td>
   </tr>
   <tr>
     <th><%= f.label(:comments) %></th>
-    <td><%= f.text_field(:comments) %></td>
+    <td><%= f.text_area(:comments) %></td>
   </tr>  
-
-  <!--<tr>
-    <th><%#= f.label(:position) %></th>
-    <td><%#= f.select(:position, 1..@song_count) %></td>
-  </tr>
-  <tr>
-    <th><%#= f.label(:visible) %></th>
-    <td><%#= f.check_box(:visible) %></td>
-  </tr> -->
-  <!-- <tr> -->
-    <th><%#= f.label(:content_type) %></th>
-    <!-- <td> -->
-      <!-- <%#= f.radio_button(:content_type, 'text') %> Text -->
-      <!-- <%#= f.radio_button(:content_type, 'HTML') %> HTML -->
-    <!-- </td> -->
-  <!-- </tr> -->
-  <!-- <tr> -->
-    <th><%#= f.label(:content) %></th>
-    <!-- <td><%#= f.text_area(:content, :size => '40x10') %></td> -->
-  </tr>
 </table>
