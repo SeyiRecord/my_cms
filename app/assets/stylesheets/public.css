@@ -7,14 +7,14 @@ body { width: 100%; min-width: 980px; height: 100%; margin: 0; padding: 10;
 #header { height: 4em; padding-top: 1em; text-align: center; 
   background: #00008B; color: #FFFFFF; }
 
-#main {width: auto; min-height: 500px; background: #B0E0E6; display: inline-block; }
+.main {min-height: 500px; background-color:#FFDAB9; display: inline-block; }
 
-#navigation { float: left; width: 200px; min-height: 480px; padding: 10px; 
-  background: #FFFFFF; color: #006400; }
+.navigation { float: left; min-height: 480px; padding: 10px; 
+  background: inherit; color: #006400; border-right: 2px solid;}
 
 #search_bar { } 
 
-#content { float: left; padding: 10px; color: #0000F0; height: auto; width: 750;}
+.content { float: left; padding: 10px; color: #0000F0; height: auto; }
 
 
 table, td, th{border:1px outset #FFFF00;}
@@ -26,6 +26,8 @@ td{background-color:#FFDAB9; color:#006400; display: inline-block;}
 f.label {background-color: inherit; }
 
 #comment {background-color: inherit; display: inline-block;}
+
+p{font-size: 18px; font-family: "Elephant"; color:#000080; }
 
 a, a:visited { color: #0000FF; }
 a:hover {}
@@ -42,4 +44,4 @@ a:hover {}
 
 
 #footer { clear: both; height: 2.5em; text-align: right;
-  background: #0000FF; color: #FFFFFF; }
+  background: #0000FF; color: #FFFFFF; font-size: 20px }

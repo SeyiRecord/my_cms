@@ -1,26 +1,28 @@
 <% @page_title = "#{@song.title}" %>
 
-<div class="content">
-  <h2><%= @song.title %> - <br />
-  	<%= @song.artist %></h2>
-  <iframe width="560" height="315" src="http://www.youtube.com/embed/<%= youtube_video_link(@song.link) %>" frameborder="0" allowfullscreen></iframe><br/>
+<div class="container_12">
+	<div class="container_12 content">
+	  <h2><%= @song.title %> - <br />
+	  	<%= @song.artist %></h2>
+	  <iframe width="560" height="315" src="http://www.youtube.com/embed/<%= youtube_video_link(@song.link) %>" frameborder="0" allowfullscreen></iframe><br/>
 
-  	<div id="comment">
-		<div>
-			<% @comments.each do |comment| %>
-				Comment Title: <%= comment.title  %><br />Comment:<%= comment.comment  %>
-			    <!--<%= link_to "Edit", edit_comment_path(comment) %> -->
-			    <%= link_to("Delete", comment, :confirm => "Are you sure?", :method => :delete ) if admin %>
-			<% end %>
+	  	<div id="comment">
+			<div>
+				<% @comments.each do |comment| %>
+					Comment Title: <%= comment.title  %><br />Comment:<%= comment.comment  %>
+				    <!--<%= link_to "Edit", edit_comment_path(comment) %> -->
+				    <%= link_to("Delete", comment, :confirm => "Are you sure?", :method => :delete ) if admin %>
+				<% end %>
 
-			<%= form_for @comment do |f| %>
-				<p><%= f.label :title, 'Comment Title' %> 
-				<%= f.text_field(:title) %></p>
-				<p><%= f.label :comment, 'Comment:' %></p>
-				<%= f.text_area(:comment) %> 
-				<%= f.hidden_field :song_id, value: @song.id %>
-				<p><%= f.submit "Submit" %> </p>
-			<% end %> 
+				<%= form_for @comment do |f| %>
+					<p><%= f.label :title, 'Comment Title' %> 
+					<%= f.text_field(:title) %></p>
+					<p><%= f.label :comment, 'Comment:' %></p>
+					<%= f.text_area(:comment) %> 
+					<%= f.hidden_field :song_id, value: @song.id %>
+					<p><%= f.submit "Submit" %> </p>
+				<% end %> 
+			</div>
 		</div>
 	</div>
 </div>

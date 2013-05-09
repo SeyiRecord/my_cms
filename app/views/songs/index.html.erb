@@ -1,23 +1,32 @@
-<div class="song show">
-	<table>
-		<tr class="listing">
-			<th>&nbsp;</th>
-      		<th>Song</th>
-      		<th>Artist</th>
-      		<th>Album</th>
-      		<th>Category</th>
-      		<th>Link</th>
-       	</tr>
 
-       	<% @songs.each do |song| %>
-	    <tr class="<%= cycle('odd', 'even') %>">
-	      	<td></td>
-      		<td><%= song.title %></td>
-      		<td><%= song.artist %></td>
-      		<td><%= song.album %></td>
-      		<td><%= song.category_id %></td>
-      		<td><%= song.link %></td>
-		</tr>
-	<% end %>	
-	</table>
+<div class="container_12">
+  <div class="grid_8 content">
+  	<table class="listing">
+  		<tr class="heading">
+    		<td>Song</td>
+        <td>Artist</td>
+        <td>Album</td>
+        <td>Category</td>
+        <td>Link</td>
+     	</tr>
+
+      <% @songs.each do |song| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= song.title %></td>
+          <td><%= song.artist %></td>
+          <td><%= song.album %></td>
+          <td><%= song.category_id %></td>
+          <td><%= song.link %></td>
+        <% end %>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+      </tr>
+
+         	
+  	</table>
+  </div>
 </div>
