@@ -83,21 +83,20 @@ ActiveRecord::Schema.define(:version => 20130508204653) do
 
   add_index "section_edits", ["admin_user_id", "section_id"], :name => "index_section_edits_on_admin_user_id_and_section_id"
 
-  create_table "sections", :force => true do |t|
-    t.integer  "page_id"
-    t.string   "name"
-    t.integer  "position"
-    t.boolean  "visible",      :default => false
-    t.string   "content_type"
-    t.text     "content"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+  create_table "songs", :force => true do |t|
+    t.string   "category"
+    t.string   "title"
+    t.string   "artist"
+    t.string   "album"
+    t.string   "image"
+    t.text     "comments"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "link"
+    t.integer  "category_id"
   end
 
-  add_index "sections", ["page_id"], :name => "index_sections_on_page_id"
-
-# Could not dump table "songs" because of following StandardError
-#   Unknown type 'category_id' for column 'category'
+  add_index "songs", ["category_id"], :name => "index_songs_on_category_id"
 
   create_table "subjects", :force => true do |t|
     t.string   "name"
