@@ -1,8 +1,12 @@
-<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
 
-<div class="category show">
-  <h3><%= @category.name  %></h3>
-      <% @songs.each do |song| %>
-        <%= song.title %><br />
-      <% end %>
+<div class="container_12">
+	<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+
+	<div class="category show">
+	  <h3><%= @category.name  %></h3>
+	      <% @songs.each do |song| %>
+	        <%= song.title %><br />
+	      <% end %>
+	</div>
 </div>

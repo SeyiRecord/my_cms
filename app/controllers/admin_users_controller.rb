@@ -1,7 +1,9 @@
 class AdminUsersController < ApplicationController
 
 	layout 'admin'
-  	before_filter :confirm_logged_in
+    before_filter :confirm_logged_in
+  	
+    skip_before_filter :confirm_logged_in, :only => :destroy
 
   	def index
   		list
@@ -20,7 +22,7 @@ class AdminUsersController < ApplicationController
   	@admin_user = AdminUser.new(params[:admin_user])
     if @admin_user.save
       flash[:notice] = 'Admin user created.'
-      redirect_to(:action => 'list')
+      redirect_to admin_users_path
     else
       render("new")
     end
@@ -34,7 +36,7 @@ class AdminUsersController < ApplicationController
   	@admin_user = AdminUser.find(params[:id])
     if @admin_user.update_attributes(params[:admin_user])
       flash[:notice] = 'Admin user updated.'
-      redirect_to(:action => 'list')
+      redirect_to admin_users_path
     else
       render("edit")
     end
@@ -45,9 +47,10 @@ class AdminUsersController < ApplicationController
   end
 
   def destroy
-    AdminUser.find(params[:id]).destroy
+    admin_user = AdminUser.find(params[:id])
+    admin_user.destroy
     flash[:notice] = "Admin user destroyed."
-    redirect_to(:action => 'list')
+    redirect_to admin_users_path
   end
 
 end

@@ -1,12 +1,12 @@
 <h2><%= @page.name %></h2>
 
-<% @page.sections.visible.sorted.each do |section| %>
-  <div class="section">
-    <% case section.content_type
+<% @category.songs.visible.sorted.each do |song| %>
+  <div class="song">
+    <% case song.content_type
        when 'HTML' %>
-         <%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a'])) %>
+         <%= raw(sanitize(song.content, :tags => ['strong', 'em', 'a'])) %>
     <% when 'text' %>
-        <p><%= section.content %></p>
+        <p><%= song.content %></p>
     <% end %>
   </div>
 <% end %>

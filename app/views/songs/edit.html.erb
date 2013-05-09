@@ -1,15 +1,17 @@
 <% @category_title = "Edit Song: #{@song.title}" %>
-<div class="song edit">
-<%#= content_tag(:iframe, youtube_video_link("www.youtube.com/watch?v=QK8mJJJvaes&list=PL24196D8ED1E54969"), html: :frameborder => "0", :allowfullscreen ) %>
-  <h2>Update Song</h2>
+<div class="container_12">
+	<div class="song edit">
+	<%#= content_tag(:iframe, youtube_video_link("www.youtube.com/watch?v=QK8mJJJvaes&list=PL24196D8ED1E54969"), html: :frameborder => "0", :allowfullscreen ) %>
+	  <h2>Update Song</h2>
 
-  <%= form_for(@song) do |f| %>
-  
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
-    
-    <div class="form-buttons">
-      <%= submit_tag("Update Song") %>
-    </div>
-    
-  <% end %>
+	  <%= form_for(@song) do |f| %>
+	  
+	    <%= render(:partial => 'form', :locals => {:f => f}) %>
+	    
+	    <div class="form-buttons">
+	      <%= submit_tag("Update Song") %>
+	    </div>
+	    
+	  <% end %>
+	</div>
 </div>

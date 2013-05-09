@@ -31,3 +31,18 @@
 #page_content{
 	width: 960px;
 }
+#songs_list {
+}
+#songs_list li {
+	display: inline;
+}
+#songs_list table {
+	border-spacing: 0px; border: 2px solid;
+}
+
+#songs_list th {
+	border: 2px solid; color: #0000FF
+}
+#songs_list td {
+	/*width: 120px;*/ border: 1px solid; color: #000F00;
+} 

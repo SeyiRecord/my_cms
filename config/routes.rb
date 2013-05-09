@@ -9,6 +9,7 @@ MyCms::Application.routes.draw do
   resources :songs
 
   root :to => "public#index"
+  match '/login', :to => 'access#login'
   match 'admin', :to => 'access#menu'
   match 'show/:id', :to => 'public#show'
 

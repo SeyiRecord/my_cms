@@ -72,3 +72,19 @@ body { padding-left: auto; padding-right: auto;}
 .header {background-color: #F0E68C; border: 2px solid;}
 h1{}
 h2{color: #006400;}
+
+#categories_list {
+}
+#categories_list li {
+  display: inline;
+}
+#categories_list table {
+  border-spacing: 0px; border: 2px solid; font-size: 18px; color: green;
+}
+
+#categories_list th {
+  border: 2px solid; color: blue; font-size: 20px;
+}
+#categories_list td {
+  /*width: 120px;*/ border: 1px solid; color: #000F00; font-size: 18px;
+} 

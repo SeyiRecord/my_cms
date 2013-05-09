@@ -1,15 +1,17 @@
-<% @song_title = "Create Song" %>
+<div class="container_12">
+	<% @song_title = "Create Song" %>
 
-<div class="song new">
-  <h2>Create Song</h2>
+	<div class="song new">
+	  <h2>Create Song</h2>
 
-  <%= form_for(@song) do |f| %>
-  
-    <%= render(:partial => 'form', :locals => {:f => f}) %>
-    
-    <div class="form-buttons">
-      <%= submit_tag("Create Song") %>
-    </div>
-    
-  <% end %>
+	  <%= form_for(@song) do |f| %>
+	  
+	    <%= render(:partial => 'form', :locals => {:f => f}) %>
+	    
+	    <div class="form-buttons">
+	      <%= submit_tag("Create Song") %>
+	    </div>
+	    
+	  <% end %>
+	</div>
 </div>

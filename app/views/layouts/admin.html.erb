@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>My CMS | <%= @page_title || 'Admin Area' %></title>
     <meta name="author" content="James Adeola">
-    <%= stylesheet_link_tag('public', 'admin', "application", :media => 'all') %>
+    <%= stylesheet_link_tag('public', 'admin', 'style12', "application", :media => 'all') %>
     <%= javascript_include_tag('application') %>
   </head>
   <body>
@@ -20,6 +20,7 @@
       <div class="navbar"><%= link_to "Create category", new_category_path  %></div>
       <div class="navbar"><%= link_to "All categories", categories_path  %></div>
     </div>
+<p><%#= link_to "Admin Login", login_path  %> </p>
 
     <div id="main">
       <% if !flash[:notice].blank? %>
