@@ -1,37 +1,26 @@
 <% @page_title = "#{@song.title}" %>
 
-<div class="song show">
-  <h2><%= @song.title %></h2>
+<div class="content">
+  <h2><%= @song.title %> - <br />
+  	<%= @song.artist %></h2>
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/<%= youtube_video_link(@song.link) %>" frameborder="0" allowfullscreen></iframe><br/>
 
-  <table summary="Song detail view">
-    <tr>
-      <th>Name</th>
-      <td><%= @song.title %></td>
-      <td><%= @song.link %></td>
-      <iframe width="560" height="315" src="http://www.youtube.com/embed/<%= youtube_video_link(@song.link) %>" frameborder="0" allowfullscreen></iframe><br/>
-    </tr>
-  </table>
-  
-</div>
+  	<div id="comment">
+		<div>
+			<% @comments.each do |comment| %>
+				Comment Title: <%= comment.title  %><br />Comment:<%= comment.comment  %>
+			    <!--<%= link_to "Edit", edit_comment_path(comment) %> -->
+			    <%= link_to("Delete", comment, :confirm => "Are you sure?", :method => :delete ) if admin %>
+			<% end %>
 
-<div>
-	<% @comments.each do |comment| %>
-	<ul>
-		<p>Comment Title: <%= comment.title  %><br />Comment:<%= comment.comment  %></p>
-	    <%= link_to "Edit", edit_comment_path(comment) %>
-	    <%= link_to("Delete", comment, :confirm => "Are you sure?", :method => :delete ) if admin %>
-	</ul>
-
-	<% end %>
-</div>
-
-<div>
-	<%= form_for @comment do |f| %>
-		<%= f.label :title, 'Comment Title' %>
-		<%= f.text_field(:title) %>
-		<%= f.label :comment, 'Comment' %>
-		<%= f.text_area(:comment) %>
-		<%= f.hidden_field :song_id, value: @song.id %>
-		<%= f.submit "Boss" %>
-	<% end %>
+			<%= form_for @comment do |f| %>
+				<p><%= f.label :title, 'Comment Title' %> 
+				<%= f.text_field(:title) %></p>
+				<p><%= f.label :comment, 'Comment:' %></p>
+				<%= f.text_area(:comment) %> 
+				<%= f.hidden_field :song_id, value: @song.id %>
+				<p><%= f.submit "Submit" %> </p>
+			<% end %> 
+		</div>
+	</div>
 </div>

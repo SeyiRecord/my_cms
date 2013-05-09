@@ -63,12 +63,4 @@ class SongsController < ApplicationController
     redirect_to root_path
   end
 
-#  private
-  #
-  #def find_page
-   # if params[:page_id]
-      #@page = Page.find_by_id(params[:page_id])
-    #end
-  #end
-  
 end

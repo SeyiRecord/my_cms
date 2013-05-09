@@ -21,6 +21,7 @@
           <%= render 'layouts/search'  %>
         </div>
       </div>
+
       <div id="content">
         <% flash.each do |k,v| %>
           <div class="alert alert-<%= k %>"><%= v %></div>
@@ -28,7 +29,8 @@
 
         <%= yield %>
       </div>
-      <div class="clear"></div>
+
+      <!--<div class="clear"></div> -->
     </div>
     <div id="footer">
       <p id="copyright">&copy;James Adeola</p>
