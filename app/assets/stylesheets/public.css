@@ -39,6 +39,7 @@ a:hover {}
 .clear { clear: both; }
 .center { text-align: center; }
 
+#comment text_area{width: 100px; height: 50px;}
 
 
 

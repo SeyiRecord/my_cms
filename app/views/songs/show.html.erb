@@ -7,7 +7,7 @@
 	  <iframe width="560" height="315" src="http://www.youtube.com/embed/<%= youtube_video_link(@song.link) %>" frameborder="0" allowfullscreen></iframe><br/>
 
 	  	<div id="comment">
-			<div>
+			
 				<% @comments.each do |comment| %>
 					Comment Title: <%= comment.title  %><br />Comment:<%= comment.comment  %>
 				    <!--<%= link_to "Edit", edit_comment_path(comment) %> -->
@@ -22,7 +22,7 @@
 					<%= f.hidden_field :song_id, value: @song.id %>
 					<p><%= f.submit "Submit" %> </p>
 				<% end %> 
-			</div>
+			
 		</div>
 	</div>
 </div>
