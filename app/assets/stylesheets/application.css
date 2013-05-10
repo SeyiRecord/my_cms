@@ -20,7 +20,7 @@
 }
 .alert-notice{
 	font-size: 14px;
-	color: yellow;
+	color: blue;
 }
 
 .alert-success{
@@ -37,12 +37,29 @@
 	display: inline;
 }
 #songs_list table {
-	border-spacing: 0px; border: 2px solid;
+	border:1px outset yellow;
 }
 
 #songs_list th {
-	border: 2px solid; color: #0000FF
+	background-color:#FFD700;color:navy; border:1px outset yellow;
 }
 #songs_list td {
-	/*width: 120px;*/ border: 1px solid; color: #000F00;
+	/*width: 120px;*/ color:darkgreen; border:1px outset yellow;
 } 
+
+#categories_list {
+}
+#categories_list li {
+  display: inline;
+}
+#categories_list table {
+  border:1px outset yellow; font-size: 18px; color: green;
+}
+
+#categories_list th {
+  border: 2px solid; color: blue; font-size: 20px;
+}
+#categories_list td {
+  /*width: 120px;*/ border: 1px solid; color: #000F00; font-size: 18px;
+} 
+

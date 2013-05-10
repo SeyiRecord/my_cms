@@ -15,9 +15,9 @@
 				<% end %>
 
 				<%= form_for @comment do |f| %>
-					<p><%= f.label :title, 'Comment Title' %> 
-					<%= f.text_field(:title) %></p>
-					<p><%= f.label :comment, 'Comment:' %></p>
+					<h4><%= f.label :title, 'Comment Title' %> 
+					<%= f.text_field(:title) %></h4>
+					<h4><%= f.label :comment, 'Comment:' %></h4>
 					<%= f.text_area(:comment) %> 
 					<%= f.hidden_field :song_id, value: @song.id %>
 					<p><%= f.submit "Submit" %> </p>
