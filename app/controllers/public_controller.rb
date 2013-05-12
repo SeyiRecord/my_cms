@@ -11,14 +11,11 @@ class PublicController < ApplicationController
   end
 
   def show
-    @page = Page.where(:permalink => params[:id], :visible => true).first
-    redirect_to(:action => 'index') unless @page
   end
 
   private
   
   def setup_navigation
-    @subjects = Subject.visible.sorted
   end
   
 end
